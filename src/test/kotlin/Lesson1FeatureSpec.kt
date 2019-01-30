@@ -12,6 +12,9 @@ class BasicsFeatureSpec : FeatureSpec({
             sum1(a, b) shouldBeLessThan 4
             sum1(0, 3) shouldBe 3
             sum1(-1, 1) shouldBe 0
+            sum1(a, b) shouldBe sum2(b,a) + sum1 (0, 0)
+            sum2(b,a) shouldBeLessThan sum1(sum2(a,b), sum2 (b,a))
+            sum2((a+a-b),(b+b-a))shouldBe 3
             // Add greater less checks
         }
     }
@@ -51,11 +54,14 @@ class BasicsFeatureSpec : FeatureSpec({
     feature("conditional expressions") {
         val max = 100
         val min = 0
-
+        var arr: List<Int>
+        val minofall = minOf2()
         scenario("returns max") {
             maxOf(min, max) shouldBe max
         }
-
+        scenario("returns minOfMany") {
+            minofall shouldBe 1
+        }
         scenario("") {
             minOf(1, 2)
         }
@@ -65,7 +71,10 @@ class BasicsFeatureSpec : FeatureSpec({
 
     feature("when expression") {
         describe(1) shouldBe "One"
-        describe("hello") shouldBe "Unknown"
+        describe("Hello") shouldBe "Greeting"
+        describe(10000L) shouldBe "Long"
+        describe(10000) shouldBe "Not a string"
+        describe("goto 10") shouldBe "Unknown"
         // Add other checks
     }
 
@@ -109,4 +118,15 @@ fun count(list: ArrayList<String>): Int {
         counter += 1
     }
     return counter
+}
+fun minOf2(): Int?{
+    return enterCollect().min()
+}
+
+//fun main(args: Array<String>) {
+//    println(enterCollect().min())
+//}
+fun enterCollect(): List<Int> {
+   // return readLine()!!.split(' ').map { it.toInt() }.toList()
+    return listOf(1,2,35,76,42,6,8,8,35,56)
 }
