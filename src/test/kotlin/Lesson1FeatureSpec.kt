@@ -71,7 +71,6 @@ class BasicsFeatureSpec : FeatureSpec({
     }
 
     // Write minOff function
-
     feature("when expression") {
         describe(1) shouldBe "One"
         describe("Hello") shouldBe "Greeting"
