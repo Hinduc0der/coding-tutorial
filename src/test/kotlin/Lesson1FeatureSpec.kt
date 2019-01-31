@@ -54,13 +54,16 @@ class BasicsFeatureSpec : FeatureSpec({
     feature("conditional expressions") {
         val max = 100
         val min = 0
-        var arr: List<Int>
-        val minofall = minOf2()
+        val minims = listOf(1,2,35,76,42,6,8,8,35,56)
+
         scenario("returns max") {
             maxOf(min, max) shouldBe max
         }
         scenario("returns minOfMany") {
-            minofall shouldBe 1
+            minims.min() shouldBe 1
+        }
+        scenario("returns minOfMany2") {
+            minims.min() shouldBe minims.get(0)
         }
         scenario("") {
             minOf(1, 2)
@@ -118,15 +121,4 @@ fun count(list: ArrayList<String>): Int {
         counter += 1
     }
     return counter
-}
-fun minOf2(): Int?{
-    return enterCollect().min()
-}
-
-//fun main(args: Array<String>) {
-//    println(enterCollect().min())
-//}
-fun enterCollect(): List<Int> {
-   // return readLine()!!.split(' ').map { it.toInt() }.toList()
-    return listOf(1,2,35,76,42,6,8,8,35,56)
 }
