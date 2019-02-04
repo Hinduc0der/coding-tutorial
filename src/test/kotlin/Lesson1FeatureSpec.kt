@@ -60,10 +60,10 @@ class BasicsFeatureSpec : FeatureSpec({
             maxOf(min, max) shouldBe max
         }
         scenario("returns minOfMany") {
-            minims.min() shouldBe 1
+            minofcollects2(minims)  shouldBe 1
         }
         scenario("returns minOfMany2") {
-            minims.min() shouldBe minims.get(0)
+            minofcollects2(minims) shouldBe minims.get(0)
         }
         scenario("") {
             minOf(1, 2)
@@ -82,12 +82,13 @@ class BasicsFeatureSpec : FeatureSpec({
 
     feature("collections") {
         val fruits = arrayListOf("Apple", "Orange", "Grapes", "Cherry")
-
+        val fruitslist = listOf("banana", "apple", "orange", "apple","lemon","apple")
+        val testfruit = Map("banana"=1, "apple"=3, "orange"=1, "lemon"=1)
         scenario("") {
             fruits.count() shouldBe 4
             fruits shouldContain "Apple"
-
             count(fruits) shouldBe 4
+            frutolist2(fruitslist) shouldBe testfruit
         }
     }
 })
@@ -120,4 +121,17 @@ fun count(list: ArrayList<String>): Int {
         counter += 1
     }
     return counter
+}
+fun minofcollects2(minims : List<Int>): Int{
+    var min : Int
+    min = minims.get(1)
+    for (i in minims ) {
+        if (i < min) {
+            min = i
+        }
+    }
+    return min
+}
+fun frutolist2 (fruitslist : List<String>): Map<String, Int>{
+    return fruitslist.groupingBy {it}.eachCount()
 }
