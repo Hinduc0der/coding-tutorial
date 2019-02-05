@@ -83,7 +83,7 @@ class BasicsFeatureSpec : FeatureSpec({
     feature("collections") {
         val fruits = arrayListOf("Apple", "Orange", "Grapes", "Cherry")
         val fruitslist = listOf("banana", "apple", "orange", "apple","lemon","apple")
-        val testfruit = Map("banana"=1, "apple"=3, "orange"=1, "lemon"=1)
+        val testfruit = mapOf("banana" to 1, "apple" to 3, "orange" to 1, "lemon" to 1)
         scenario("") {
             fruits.count() shouldBe 4
             fruits shouldContain "Apple"
