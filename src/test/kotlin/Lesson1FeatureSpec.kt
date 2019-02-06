@@ -65,6 +65,9 @@ class BasicsFeatureSpec : FeatureSpec({
         scenario("returns minOfMany2") {
             minofcollects2(minims) shouldBe minims.get(0)
         }
+        scenario("returns minOfMany3") {
+            minofcollects3(1,2,35,76,42,6,8,8,35,56,32) shouldBe 1
+        }
         scenario("") {
             minOf(1, 2)
         }
@@ -134,4 +137,17 @@ fun minofcollects2(minims : List<Int>): Int{
 }
 fun frutolist2 (fruitslist : List<String>): Map<String, Int>{
     return fruitslist.groupingBy {it}.eachCount()
+}
+
+fun minofcollects3(vararg minims: Int): Int {
+    var min: Int
+    min = 1 // очень плохое решение проблемы
+ //  min = 10000 //  не могу придумать, как правильно обозначить min, чтобы он точно был не меньше какого-то элемента варарга
+    for (i in minims) {min = i} //очень некрасиво, но хоть без хардкода
+    for (i in minims) {
+        if (i < min) {
+            min = i
+        }
+    }
+    return min
 }
