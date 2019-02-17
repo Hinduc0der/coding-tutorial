@@ -140,10 +140,7 @@ fun frutolist2 (fruitslist : List<String>): Map<String, Int>{
 }
 
 fun minofcollects3(vararg minims: Int): Int {
-    var min: Int
-    min = 1 // очень плохое решение проблемы
- //  min = 10000 //  не могу придумать, как правильно обозначить min, чтобы он точно был не меньше какого-то элемента варарга
-    for (i in minims) {min = i} //очень некрасиво, но хоть без хардкода
+    var min: Int = minims[0]
     for (i in minims) {
         if (i < min) {
             min = i
